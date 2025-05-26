@@ -1,0 +1,7 @@
+cd path/to/smart_lighting_app
+python app.py
+
+
+
+link of smart app
+http://127.0.0.1:5000

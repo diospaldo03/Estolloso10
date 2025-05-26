@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Lighting App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Smart Lighting App</h1>
+
+    <div class="control-panel">
+        <div class="main-controls">
+            <div class="switch-container">
+                <span class="switch-label">Main Switch</span>
+                <button class="toggle-btn btn-primary" id="mainSwitch" onclick="toggleAll()">
+                    <span class="on-text">ON</span>
+                    <span class="off-text">OFF</span>
+                </button>
+            </div>
+            
+            <button class="toggle-btn btn-warning" id="blinkButton" onclick="toggleBlink()">
+                <span class="on-text">Stop Blinking</span>
+                <span class="off-text">Start Blinking</span>
+            </button>
+            
+            <button class="toggle-btn" id="sequenceButton" onclick="toggleSequence()">
+                <span class="on-text">Stop Sequence</span>
+                <span class="off-text">Start Sequence</span>
+            </button>
+            
+            <div class="speed-control">
+                <label for="speedControl">Speed:</label>
+                <input type="range" id="speedControl" min="100" max="2000" value="500" onchange="updateSpeed(this.value)">
+                <span class="percentage-label" id="speedLabel">500ms</span>
+            </div>
+        </div>
+        
+        <div class="bulb-box">
+            <div class="light" id="light1"></div>
+            <div class="controls-container">
+                <div class="switch-container">
+                    <button class="toggle-btn" id="switch1" onclick="toggleLight('light1')">
+                        <span class="on-text">ON</span>
+                        <span class="off-text">OFF</span>
+                    </button>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="50" onchange="adjustBrightness('light1', this)" id="slider1">
+                    <span class="percentage-label" id="label1">50%</span>
+                </div>
+                <input type="color" class="color-picker" value="#ffff00" onchange="changeColor('light1', this.value)">
+            </div>
+        </div>
+
+        <div class="bulb-box">
+            <div class="light" id="light2"></div>
+            <div class="controls-container">
+                <div class="switch-container">
+                    <button class="toggle-btn" id="switch2" onclick="toggleLight('light2')">
+                        <span class="on-text">ON</span>
+                        <span class="off-text">OFF</span>
+                    </button>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="50" onchange="adjustBrightness('light2', this)" id="slider2">
+                    <span class="percentage-label" id="label2">50%</span>
+                </div>
+                <input type="color" class="color-picker" value="#ffff00" onchange="changeColor('light2', this.value)">
+            </div>
+        </div>
+
+        <div class="bulb-box">
+            <div class="light" id="light3"></div>
+            <div class="controls-container">
+                <div class="switch-container">
+                    <button class="toggle-btn" id="switch3" onclick="toggleLight('light3')">
+                        <span class="on-text">ON</span>
+                        <span class="off-text">OFF</span>
+                    </button>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="50" onchange="adjustBrightness('light3', this)" id="slider3">
+                    <span class="percentage-label" id="label3">50%</span>
+                </div>
+                <input type="color" class="color-picker" value="#ffff00" onchange="changeColor('light3', this.value)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Effects -->
+    <audio id="soundOn" src="{{ url_for('static', filename='switch-on.mp3') }}"></audio>
+    <audio id="soundOff" src="{{ url_for('static', filename='switch-off.mp3') }}"></audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
